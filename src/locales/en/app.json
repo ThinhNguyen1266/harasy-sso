@@ -1,0 +1,165 @@
+{
+  "validation": {
+    "email": "Enter a valid email",
+    "displayNameMin": "Too short",
+    "timezoneMin": "Too short",
+    "passwordMin6": "At least 6 characters",
+    "passwordMin8": "At least 8 characters",
+    "passwordMismatch": "Passwords do not match",
+    "slug": "Use lowercase letters, numbers, and hyphens"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {{name}}",
+    "welcomeFallback": "there",
+    "description": "Here is a quick snapshot of your Harasy identity.",
+    "stats": {
+      "tenants": "Tenants",
+      "tenantsDesc": "Organizations you can access",
+      "invites": "Pending invites",
+      "invitesDesc": "Awaiting your response",
+      "plan": "Plan",
+      "planDesc": "Current subscription"
+    },
+    "activity": {
+      "title": "Recent activity",
+      "description": "Security and account events"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "Manage your personal information and security settings.",
+    "tabs": {
+      "general": "General",
+      "security": "Security"
+    },
+    "identity": {
+      "title": "Identity",
+      "description": "These details are shared across Harasy products.",
+      "avatar": "Avatar",
+      "avatarMock": "Mock mode: uploads are disabled.",
+      "upload": "Upload",
+      "email": "Email",
+      "displayName": "Display name",
+      "jobTitle": "Job title",
+      "phone": "Phone",
+      "timezone": "Timezone",
+      "save": "Save changes",
+      "saving": "Saving…"
+    },
+    "password": {
+      "title": "Change password",
+      "description": "Use a strong password you do not reuse elsewhere.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "submit": "Update password",
+      "submitting": "Updating…"
+    },
+    "twoFactor": {
+      "title": "Two-factor authentication",
+      "description": "Add an extra layer of protection to your account.",
+      "status": "Status: {{state}}",
+      "on": "On",
+      "off": "Off",
+      "enable": "Enable 2FA"
+    }
+  },
+  "subscription": {
+    "title": "Subscription",
+    "description": "Manage billing, limits, and plan changes.",
+    "currentPlan": "Current plan",
+    "currentPlanDesc": "Your subscription renews automatically unless canceled.",
+    "billing": "Billing",
+    "renews": "Renews",
+    "cancelEnd": "Cancel at period end",
+    "keepSub": "Keep subscription",
+    "seats": "Seats",
+    "apiCalls": "API calls",
+    "storage": "Storage",
+    "needMore": "Need more?",
+    "needMoreDesc": "Upgrade when you are ready—mock changes apply instantly.",
+    "enterpriseBlurb": "Enterprise includes dedicated support, SLAs, and advanced compliance.",
+    "compare": "Compare plans",
+    "compareDesc": "Pick the plan that matches your rollout stage.",
+    "planCol": "Plan",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "action": "Action",
+    "free": "Free",
+    "current": "Current",
+    "select": "Select",
+    "footerNote": "Prices shown in USD (mock).",
+    "popular": "Popular"
+  },
+  "tenants": {
+    "title": "Tenants",
+    "description": "Switch your active tenant and open workspace tools when you are an owner.",
+    "setActive": "Set active",
+    "settings": "Settings",
+    "workspace": "Workspace",
+    "ownerOnly": "Owner only",
+    "active": "Active"
+  },
+  "tenantSettings": {
+    "notFound": "Tenant not found",
+    "back": "Back to tenants",
+    "title": "Tenant settings",
+    "description": "Branding, domains, and billing metadata for this organization.",
+    "openWorkspace": "Open workspace",
+    "general": "General",
+    "generalDesc": "Basic tenant profile used across Harasy apps.",
+    "role": "Role: {{role}}",
+    "name": "Tenant name",
+    "slug": "Slug",
+    "domain": "Custom domain",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "billing": "Billing",
+    "billingDesc": "Mock: connect Stripe or your billing provider later.",
+    "billingBlurb": "Plan is managed at the user level in this demo.",
+    "goSubscription": "Go to subscription"
+  },
+  "workspace": {
+    "notFound": "Tenant not found",
+    "restrictedTitle": "Workspace",
+    "restrictedDesc": "Only the tenant owner can manage members and invites here.",
+    "accessTitle": "Access restricted",
+    "accessDesc": "Your role for {{name}} is {{role}}.",
+    "back": "Back to tenants",
+    "title": "{{name}} workspace",
+    "description": "Invite teammates, review roles, and keep access tidy.",
+    "tenantSettings": "Tenant settings",
+    "members": "Members",
+    "membersDesc": "Everyone with access to this tenant.",
+    "user": "User",
+    "role": "Role",
+    "joined": "Joined",
+    "invite": {
+      "title": "Invite member",
+      "desc": "Mock: no email is sent.",
+      "email": "Email",
+      "role": "Role",
+      "admin": "Admin",
+      "member": "Member",
+      "send": "Send invite",
+      "sending": "Sending…"
+    },
+    "danger": {
+      "title": "Danger zone",
+      "desc": "Destructive actions are disabled in mock mode.",
+      "transfer": "Transfer ownership",
+      "delete": "Delete tenant"
+    }
+  },
+  "invitations": {
+    "title": "Invitations",
+    "description": "Accept or decline invites to join other tenants.",
+    "pending": "Pending",
+    "pendingDesc": "These invites are waiting for your response.",
+    "empty": "You are all caught up.",
+    "invitedBy": "Invited by {{name}} · {{date}}",
+    "sentTo": "Sent to {{email}}",
+    "accept": "Accept",
+    "decline": "Decline"
+  }
+}

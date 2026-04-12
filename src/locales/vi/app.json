@@ -1,0 +1,165 @@
+{
+  "validation": {
+    "email": "Nhập email hợp lệ",
+    "displayNameMin": "Quá ngắn",
+    "timezoneMin": "Quá ngắn",
+    "passwordMin6": "Ít nhất 6 ký tự",
+    "passwordMin8": "Ít nhất 8 ký tự",
+    "passwordMismatch": "Mật khẩu không khớp",
+    "slug": "Chỉ dùng chữ thường, số và dấu gạch ngang"
+  },
+  "dashboard": {
+    "welcome": "Chào mừng trở lại, {{name}}",
+    "welcomeFallback": "bạn",
+    "description": "Tóm tắt nhanh về tài khoản Harasy của bạn.",
+    "stats": {
+      "tenants": "Tổ chức",
+      "tenantsDesc": "Các tổ chức bạn có thể truy cập",
+      "invites": "Lời mời chờ",
+      "invitesDesc": "Đang chờ bạn phản hồi",
+      "plan": "Gói",
+      "planDesc": "Đăng ký hiện tại"
+    },
+    "activity": {
+      "title": "Hoạt động gần đây",
+      "description": "Sự kiện bảo mật và tài khoản"
+    }
+  },
+  "profile": {
+    "title": "Hồ sơ",
+    "description": "Quản lý thông tin cá nhân và cài đặt bảo mật.",
+    "tabs": {
+      "general": "Chung",
+      "security": "Bảo mật"
+    },
+    "identity": {
+      "title": "Danh tính",
+      "description": "Thông tin này được dùng chung trên các sản phẩm Harasy.",
+      "avatar": "Ảnh đại diện",
+      "avatarMock": "Chế độ demo: không tải ảnh lên.",
+      "upload": "Tải lên",
+      "email": "Email",
+      "displayName": "Tên hiển thị",
+      "jobTitle": "Chức danh",
+      "phone": "Điện thoại",
+      "timezone": "Múi giờ",
+      "save": "Lưu thay đổi",
+      "saving": "Đang lưu…"
+    },
+    "password": {
+      "title": "Đổi mật khẩu",
+      "description": "Dùng mật khẩu mạnh và không trùng nơi khác.",
+      "current": "Mật khẩu hiện tại",
+      "new": "Mật khẩu mới",
+      "confirm": "Xác nhận mật khẩu mới",
+      "submit": "Cập nhật mật khẩu",
+      "submitting": "Đang cập nhật…"
+    },
+    "twoFactor": {
+      "title": "Xác thực hai lớp",
+      "description": "Thêm lớp bảo vệ cho tài khoản.",
+      "status": "Trạng thái: {{state}}",
+      "on": "Bật",
+      "off": "Tắt",
+      "enable": "Bật 2FA"
+    }
+  },
+  "subscription": {
+    "title": "Gói đăng ký",
+    "description": "Quản lý thanh toán, hạn mức và đổi gói.",
+    "currentPlan": "Gói hiện tại",
+    "currentPlanDesc": "Gói sẽ tự gia hạn trừ khi bạn hủy.",
+    "billing": "Thanh toán",
+    "renews": "Gia hạn",
+    "cancelEnd": "Hủy khi hết kỳ",
+    "keepSub": "Giữ gói",
+    "seats": "Ghế ngồi",
+    "apiCalls": "Gọi API",
+    "storage": "Lưu trữ",
+    "needMore": "Cần nâng cấp?",
+    "needMoreDesc": "Nâng cấp khi sẵn sàng — demo áp dụng ngay.",
+    "enterpriseBlurb": "Gói Doanh nghiệp có hỗ trợ riêng, SLA và tuân thủ nâng cao.",
+    "compare": "So sánh gói",
+    "compareDesc": "Chọn gói phù hợp giai đoạn triển khai.",
+    "planCol": "Gói",
+    "monthly": "Tháng",
+    "yearly": "Năm",
+    "action": "Thao tác",
+    "free": "Miễn phí",
+    "current": "Hiện tại",
+    "select": "Chọn",
+    "footerNote": "Giá USD (demo).",
+    "popular": "Phổ biến"
+  },
+  "tenants": {
+    "title": "Tổ chức",
+    "description": "Đặt tổ chức đang dùng và mở không gian làm việc nếu bạn là chủ sở hữu.",
+    "setActive": "Đặt làm hiện tại",
+    "settings": "Cài đặt",
+    "workspace": "Không gian làm việc",
+    "ownerOnly": "Chỉ chủ sở hữu",
+    "active": "Đang dùng"
+  },
+  "tenantSettings": {
+    "notFound": "Không tìm thấy tổ chức",
+    "back": "Về danh sách tổ chức",
+    "title": "Cài đặt tổ chức",
+    "description": "Thương hiệu, tên miền và thông tin thanh toán.",
+    "openWorkspace": "Mở không gian làm việc",
+    "general": "Chung",
+    "generalDesc": "Thông tin cơ bản dùng trên ứng dụng Harasy.",
+    "role": "Vai trò: {{role}}",
+    "name": "Tên tổ chức",
+    "slug": "Slug",
+    "domain": "Tên miền tùy chỉnh",
+    "save": "Lưu thay đổi",
+    "saving": "Đang lưu…",
+    "billing": "Thanh toán",
+    "billingDesc": "Demo: sau này kết nối Stripe hoặc nhà cung cấp thanh toán.",
+    "billingBlurb": "Gói được quản lý theo người dùng trong bản demo.",
+    "goSubscription": "Đến gói đăng ký"
+  },
+  "workspace": {
+    "notFound": "Không tìm thấy tổ chức",
+    "restrictedTitle": "Không gian làm việc",
+    "restrictedDesc": "Chỉ chủ sở hữu tổ chức mới quản lý thành viên và lời mời tại đây.",
+    "accessTitle": "Không có quyền",
+    "accessDesc": "Vai trò của bạn tại {{name}} là {{role}}.",
+    "back": "Về danh sách tổ chức",
+    "title": "Không gian làm việc {{name}}",
+    "description": "Mời đồng đội, xem vai trò và quản lý quyền truy cập.",
+    "tenantSettings": "Cài đặt tổ chức",
+    "members": "Thành viên",
+    "membersDesc": "Mọi người có quyền truy cập tổ chức này.",
+    "user": "Người dùng",
+    "role": "Vai trò",
+    "joined": "Tham gia",
+    "invite": {
+      "title": "Mời thành viên",
+      "desc": "Demo: không gửi email.",
+      "email": "Email",
+      "role": "Vai trò",
+      "admin": "Quản trị",
+      "member": "Thành viên",
+      "send": "Gửi lời mời",
+      "sending": "Đang gửi…"
+    },
+    "danger": {
+      "title": "Vùng nguy hiểm",
+      "desc": "Hành động phá hủy đang tắt trong chế độ demo.",
+      "transfer": "Chuyển quyền sở hữu",
+      "delete": "Xóa tổ chức"
+    }
+  },
+  "invitations": {
+    "title": "Lời mời",
+    "description": "Chấp nhận hoặc từ chối lời mời tham gia tổ chức khác.",
+    "pending": "Đang chờ",
+    "pendingDesc": "Các lời mời đang chờ bạn phản hồi.",
+    "empty": "Bạn đã xử lý xong.",
+    "invitedBy": "Mời bởi {{name}} · {{date}}",
+    "sentTo": "Gửi tới {{email}}",
+    "accept": "Chấp nhận",
+    "decline": "Từ chối"
+  }
+}

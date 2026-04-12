@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "tagline": "Single Sign-On",
+    "identity": "Harasy Identity",
+    "logoAlt": "Harasy"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "subscription": "Subscription",
+    "tenants": "Tenants",
+    "invitations": "Invitations"
+  },
+  "actions": {
+    "logOut": "Log out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Theme"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "loading": "Loading…",
+  "account": "Account",
+  "roles": {
+    "owner": "owner",
+    "admin": "admin",
+    "member": "member"
+  }
+}

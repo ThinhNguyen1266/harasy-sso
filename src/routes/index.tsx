@@ -1,0 +1,12 @@
+import { createFileRoute, redirect } from '@tanstack/react-router'
+
+import { ensureSessionFromStorage } from '@/stores/auth.store'
+
+export const Route = createFileRoute('/')({
+  beforeLoad: () => {
+    if (ensureSessionFromStorage()) {
+      throw redirect({ to: '/dashboard' })
+    }
+    throw redirect({ to: '/login' })
+  },
+})

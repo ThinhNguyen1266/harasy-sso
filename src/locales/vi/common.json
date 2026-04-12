@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "tagline": "Đăng nhập một lần",
+    "identity": "Nhận diện Harasy",
+    "logoAlt": "Harasy"
+  },
+  "nav": {
+    "dashboard": "Bảng điều khiển",
+    "profile": "Hồ sơ",
+    "subscription": "Gói đăng ký",
+    "tenants": "Tổ chức",
+    "invitations": "Lời mời"
+  },
+  "actions": {
+    "logOut": "Đăng xuất",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu"
+  },
+  "theme": {
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Theo hệ thống",
+    "toggle": "Giao diện"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "loading": "Đang tải…",
+  "account": "Tài khoản",
+  "roles": {
+    "owner": "chủ sở hữu",
+    "admin": "quản trị",
+    "member": "thành viên"
+  }
+}
