@@ -1,18 +1,18 @@
+import { SignIn } from '@clerk/react'
 import { createFileRoute } from '@tanstack/react-router'
-import { useTranslation } from 'react-i18next'
 
 import { AuthLayout } from '@/components/shared/AuthLayout'
-import { LoginForm } from '@/features/auth/components/LoginForm'
 
 export const Route = createFileRoute('/_auth/login')({
   component: LoginRoute,
 })
 
-function LoginRoute() {
-  const { t } = useTranslation('auth')
+export function LoginRoute() {
   return (
-    <AuthLayout title={t('login.title')} description={t('login.description')}>
-      <LoginForm />
+    <AuthLayout>
+      <div className="flex w-full justify-center [&_.cl-rootBox]:w-full [&_.cl-card]:shadow-none">
+        <SignIn routing="path" path="/login" signInUrl="/login" signUpUrl="/register" fallbackRedirectUrl="/dashboard" />
+      </div>
     </AuthLayout>
   )
 }

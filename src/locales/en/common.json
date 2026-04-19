@@ -28,6 +28,13 @@
     "vi": "Tiếng Việt"
   },
   "loading": "Loading…",
+  "clerkConfig": {
+    "missingKeyTitle": "Clerk is not configured",
+    "missingKeyDescription": "The app cannot load authentication because the publishable key is missing.",
+    "stepCopy": "Copy public-harasy/.env.example to .env.local (or .env) in the public-harasy folder.",
+    "stepRestart": "Restart the dev server (bun run dev) after saving.",
+    "docsHint": "Get your key from the Clerk Dashboard → API keys → Publishable key."
+  },
   "account": "Account",
   "roles": {
     "owner": "owner",

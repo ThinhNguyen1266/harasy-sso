@@ -1,13 +1,25 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { useAuth } from '@clerk/react'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
 import { AppShell } from '@/components/shared/AppShell'
-import { ensureSessionFromStorage } from '@/stores/auth.store'
+import { FullPageSpinner } from '@/components/shared/FullPageSpinner'
 
 export const Route = createFileRoute('/_app')({
-  beforeLoad: () => {
-    if (!ensureSessionFromStorage()) {
-      throw redirect({ to: '/login' })
-    }
-  },
-  component: AppShell,
+  component: AppGuard,
 })
+
+function AppGuard() {
+  const { isLoaded, isSignedIn } = useAuth()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      void navigate({ to: '/login' })
+    }
+  }, [isLoaded, isSignedIn, navigate])
+
+  if (!isLoaded) return <FullPageSpinner />
+  if (!isSignedIn) return null
+  return <AppShell />
+}

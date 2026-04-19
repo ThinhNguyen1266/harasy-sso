@@ -28,6 +28,13 @@
     "vi": "Tiếng Việt"
   },
   "loading": "Đang tải…",
+  "clerkConfig": {
+    "missingKeyTitle": "Chưa cấu hình Clerk",
+    "missingKeyDescription": "Ứng dụng không thể tải xác thực vì thiếu publishable key.",
+    "stepCopy": "Sao chép public-harasy/.env.example thành .env.local (hoặc .env) trong thư mục public-harasy.",
+    "stepRestart": "Khởi động lại dev server (bun run dev) sau khi lưu file.",
+    "docsHint": "Lấy key tại Clerk Dashboard → API keys → Publishable key."
+  },
   "account": "Tài khoản",
   "roles": {
     "owner": "chủ sở hữu",

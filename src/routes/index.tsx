@@ -1,12 +1,22 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { useAuth } from '@clerk/react'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
-import { ensureSessionFromStorage } from '@/stores/auth.store'
+import { FullPageSpinner } from '@/components/shared/FullPageSpinner'
 
 export const Route = createFileRoute('/')({
-  beforeLoad: () => {
-    if (ensureSessionFromStorage()) {
-      throw redirect({ to: '/dashboard' })
-    }
-    throw redirect({ to: '/login' })
-  },
+  component: IndexGate,
 })
+
+function IndexGate() {
+  const { isLoaded, isSignedIn } = useAuth()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isLoaded) return
+    void navigate({ to: isSignedIn ? '/dashboard' : '/login', replace: true })
+  }, [isLoaded, isSignedIn, navigate])
+
+  if (!isLoaded) return <FullPageSpinner />
+  return null
+}
