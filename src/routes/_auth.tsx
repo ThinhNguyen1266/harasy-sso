@@ -1,14 +1,24 @@
-import { Outlet, createFileRoute, redirect } from '@tanstack/react-router'
+import { useAuth } from '@clerk/react'
+import { Outlet, createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
-import { ensureSessionFromStorage } from '@/stores/auth.store'
+import { FullPageSpinner } from '@/components/shared/FullPageSpinner'
 
 export const Route = createFileRoute('/_auth')({
-  beforeLoad: ({ location }) => {
-    const authed = Boolean(ensureSessionFromStorage())
-    const path = location.pathname
-    if (authed && (path === '/login' || path === '/register' || path === '/forgot-password')) {
-      throw redirect({ to: '/dashboard' })
-    }
-  },
-  component: () => <Outlet />,
+  component: AuthLayoutShell,
 })
+
+function AuthLayoutShell() {
+  const { isLoaded, isSignedIn } = useAuth()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      void navigate({ to: '/dashboard' })
+    }
+  }, [isLoaded, isSignedIn, navigate])
+
+  if (!isLoaded) return <FullPageSpinner />
+  if (isSignedIn) return null
+  return <Outlet />
+}

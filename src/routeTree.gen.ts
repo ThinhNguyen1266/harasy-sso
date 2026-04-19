@@ -20,6 +20,9 @@ import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppInvitationsRouteImport } from './routes/_app/invitations'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppTenantsIndexRouteImport } from './routes/_app/tenants/index'
+import { Route as AuthRegisterSplatRouteImport } from './routes/_auth/register.$'
+import { Route as AuthLoginSplatRouteImport } from './routes/_auth/login.$'
+import { Route as AuthForgotPasswordSplatRouteImport } from './routes/_auth/forgot-password.$'
 import { Route as AppTenantsTenantIdWorkspaceRouteImport } from './routes/_app/tenants/$tenantId/workspace'
 import { Route as AppTenantsTenantIdSettingsRouteImport } from './routes/_app/tenants/$tenantId/settings'
 
@@ -76,6 +79,21 @@ const AppTenantsIndexRoute = AppTenantsIndexRouteImport.update({
   path: '/tenants/',
   getParentRoute: () => AppRoute,
 } as any)
+const AuthRegisterSplatRoute = AuthRegisterSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => AuthRegisterRoute,
+} as any)
+const AuthLoginSplatRoute = AuthLoginSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => AuthLoginRoute,
+} as any)
+const AuthForgotPasswordSplatRoute = AuthForgotPasswordSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => AuthForgotPasswordRoute,
+} as any)
 const AppTenantsTenantIdWorkspaceRoute =
   AppTenantsTenantIdWorkspaceRouteImport.update({
     id: '/tenants/$tenantId/workspace',
@@ -95,9 +113,12 @@ export interface FileRoutesByFullPath {
   '/invitations': typeof AppInvitationsRoute
   '/profile': typeof AppProfileRoute
   '/subscription': typeof AppSubscriptionRoute
-  '/forgot-password': typeof AuthForgotPasswordRoute
-  '/login': typeof AuthLoginRoute
-  '/register': typeof AuthRegisterRoute
+  '/forgot-password': typeof AuthForgotPasswordRouteWithChildren
+  '/login': typeof AuthLoginRouteWithChildren
+  '/register': typeof AuthRegisterRouteWithChildren
+  '/forgot-password/$': typeof AuthForgotPasswordSplatRoute
+  '/login/$': typeof AuthLoginSplatRoute
+  '/register/$': typeof AuthRegisterSplatRoute
   '/tenants/': typeof AppTenantsIndexRoute
   '/tenants/$tenantId/settings': typeof AppTenantsTenantIdSettingsRoute
   '/tenants/$tenantId/workspace': typeof AppTenantsTenantIdWorkspaceRoute
@@ -108,9 +129,12 @@ export interface FileRoutesByTo {
   '/invitations': typeof AppInvitationsRoute
   '/profile': typeof AppProfileRoute
   '/subscription': typeof AppSubscriptionRoute
-  '/forgot-password': typeof AuthForgotPasswordRoute
-  '/login': typeof AuthLoginRoute
-  '/register': typeof AuthRegisterRoute
+  '/forgot-password': typeof AuthForgotPasswordRouteWithChildren
+  '/login': typeof AuthLoginRouteWithChildren
+  '/register': typeof AuthRegisterRouteWithChildren
+  '/forgot-password/$': typeof AuthForgotPasswordSplatRoute
+  '/login/$': typeof AuthLoginSplatRoute
+  '/register/$': typeof AuthRegisterSplatRoute
   '/tenants': typeof AppTenantsIndexRoute
   '/tenants/$tenantId/settings': typeof AppTenantsTenantIdSettingsRoute
   '/tenants/$tenantId/workspace': typeof AppTenantsTenantIdWorkspaceRoute
@@ -124,9 +148,12 @@ export interface FileRoutesById {
   '/_app/invitations': typeof AppInvitationsRoute
   '/_app/profile': typeof AppProfileRoute
   '/_app/subscription': typeof AppSubscriptionRoute
-  '/_auth/forgot-password': typeof AuthForgotPasswordRoute
-  '/_auth/login': typeof AuthLoginRoute
-  '/_auth/register': typeof AuthRegisterRoute
+  '/_auth/forgot-password': typeof AuthForgotPasswordRouteWithChildren
+  '/_auth/login': typeof AuthLoginRouteWithChildren
+  '/_auth/register': typeof AuthRegisterRouteWithChildren
+  '/_auth/forgot-password/$': typeof AuthForgotPasswordSplatRoute
+  '/_auth/login/$': typeof AuthLoginSplatRoute
+  '/_auth/register/$': typeof AuthRegisterSplatRoute
   '/_app/tenants/': typeof AppTenantsIndexRoute
   '/_app/tenants/$tenantId/settings': typeof AppTenantsTenantIdSettingsRoute
   '/_app/tenants/$tenantId/workspace': typeof AppTenantsTenantIdWorkspaceRoute
@@ -142,6 +169,9 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/forgot-password/$'
+    | '/login/$'
+    | '/register/$'
     | '/tenants/'
     | '/tenants/$tenantId/settings'
     | '/tenants/$tenantId/workspace'
@@ -155,6 +185,9 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/forgot-password/$'
+    | '/login/$'
+    | '/register/$'
     | '/tenants'
     | '/tenants/$tenantId/settings'
     | '/tenants/$tenantId/workspace'
@@ -170,6 +203,9 @@ export interface FileRouteTypes {
     | '/_auth/forgot-password'
     | '/_auth/login'
     | '/_auth/register'
+    | '/_auth/forgot-password/$'
+    | '/_auth/login/$'
+    | '/_auth/register/$'
     | '/_app/tenants/'
     | '/_app/tenants/$tenantId/settings'
     | '/_app/tenants/$tenantId/workspace'
@@ -260,6 +296,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTenantsIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_auth/register/$': {
+      id: '/_auth/register/$'
+      path: '/$'
+      fullPath: '/register/$'
+      preLoaderRoute: typeof AuthRegisterSplatRouteImport
+      parentRoute: typeof AuthRegisterRoute
+    }
+    '/_auth/login/$': {
+      id: '/_auth/login/$'
+      path: '/$'
+      fullPath: '/login/$'
+      preLoaderRoute: typeof AuthLoginSplatRouteImport
+      parentRoute: typeof AuthLoginRoute
+    }
+    '/_auth/forgot-password/$': {
+      id: '/_auth/forgot-password/$'
+      path: '/$'
+      fullPath: '/forgot-password/$'
+      preLoaderRoute: typeof AuthForgotPasswordSplatRouteImport
+      parentRoute: typeof AuthForgotPasswordRoute
+    }
     '/_app/tenants/$tenantId/workspace': {
       id: '/_app/tenants/$tenantId/workspace'
       path: '/tenants/$tenantId/workspace'
@@ -299,16 +356,51 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface AuthForgotPasswordRouteChildren {
+  AuthForgotPasswordSplatRoute: typeof AuthForgotPasswordSplatRoute
+}
+
+const AuthForgotPasswordRouteChildren: AuthForgotPasswordRouteChildren = {
+  AuthForgotPasswordSplatRoute: AuthForgotPasswordSplatRoute,
+}
+
+const AuthForgotPasswordRouteWithChildren =
+  AuthForgotPasswordRoute._addFileChildren(AuthForgotPasswordRouteChildren)
+
+interface AuthLoginRouteChildren {
+  AuthLoginSplatRoute: typeof AuthLoginSplatRoute
+}
+
+const AuthLoginRouteChildren: AuthLoginRouteChildren = {
+  AuthLoginSplatRoute: AuthLoginSplatRoute,
+}
+
+const AuthLoginRouteWithChildren = AuthLoginRoute._addFileChildren(
+  AuthLoginRouteChildren,
+)
+
+interface AuthRegisterRouteChildren {
+  AuthRegisterSplatRoute: typeof AuthRegisterSplatRoute
+}
+
+const AuthRegisterRouteChildren: AuthRegisterRouteChildren = {
+  AuthRegisterSplatRoute: AuthRegisterSplatRoute,
+}
+
+const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
+  AuthRegisterRouteChildren,
+)
+
 interface AuthRouteChildren {
-  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
-  AuthLoginRoute: typeof AuthLoginRoute
-  AuthRegisterRoute: typeof AuthRegisterRoute
+  AuthForgotPasswordRoute: typeof AuthForgotPasswordRouteWithChildren
+  AuthLoginRoute: typeof AuthLoginRouteWithChildren
+  AuthRegisterRoute: typeof AuthRegisterRouteWithChildren
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
-  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
-  AuthLoginRoute: AuthLoginRoute,
-  AuthRegisterRoute: AuthRegisterRoute,
+  AuthForgotPasswordRoute: AuthForgotPasswordRouteWithChildren,
+  AuthLoginRoute: AuthLoginRouteWithChildren,
+  AuthRegisterRoute: AuthRegisterRouteWithChildren,
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)

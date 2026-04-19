@@ -1,18 +1,24 @@
+import { SignIn } from '@clerk/react'
 import { createFileRoute } from '@tanstack/react-router'
-import { useTranslation } from 'react-i18next'
 
 import { AuthLayout } from '@/components/shared/AuthLayout'
-import { ForgotPasswordWizard } from '@/features/auth/components/ForgotPasswordWizard'
 
 export const Route = createFileRoute('/_auth/forgot-password')({
   component: ForgotPasswordRoute,
 })
 
-function ForgotPasswordRoute() {
-  const { t } = useTranslation('auth')
+export function ForgotPasswordRoute() {
   return (
-    <AuthLayout title={t('forgot.title')} description={t('forgot.description')}>
-      <ForgotPasswordWizard />
+    <AuthLayout>
+      <div className="flex w-full justify-center [&_.cl-rootBox]:w-full [&_.cl-card]:shadow-none">
+        <SignIn
+          routing="path"
+          path="/forgot-password"
+          signInUrl="/login"
+          signUpUrl="/register"
+          fallbackRedirectUrl="/dashboard"
+        />
+      </div>
     </AuthLayout>
   )
 }

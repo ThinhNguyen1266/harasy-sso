@@ -7,12 +7,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { cn } from '@/lib/utils'
 
 type AuthLayoutProps = {
-  title: string
-  description?: string
+  /** Omit both title and description when embedding Clerk (it brings its own headings). */
+  title?: string | null
+  description?: string | null
   children: ReactNode
 }
 
 export function AuthLayout({ title, description, children }: AuthLayoutProps) {
+  const showHeader = Boolean(title) || Boolean(description)
   return (
     <div className="relative min-h-dvh overflow-hidden">
       <div
@@ -30,19 +32,23 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
       />
       <div className="relative z-10 flex min-h-dvh flex-col px-4 py-8">
         <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
-          <div className="mb-6 flex items-start justify-between gap-4">
-            <AppLogo className="drop-shadow-sm" />
+          <div className={cn('mb-6 flex items-start gap-4', showHeader ? 'justify-between' : 'justify-end')}>
+            {showHeader ? <AppLogo className="drop-shadow-sm" /> : null}
             <ThemeLanguageToolbar variant="compact" className="shrink-0" />
           </div>
           <div className="flex flex-1 flex-col items-center justify-center pb-8">
-            <div className="w-full max-w-md">
-              <Card className="border-border/80 bg-card/95 shadow-none backdrop-blur-sm dark:bg-card/90">
-                <CardHeader>
-                  <CardTitle>{title}</CardTitle>
-                  {description ? <CardDescription>{description}</CardDescription> : null}
-                </CardHeader>
-                <CardContent>{children}</CardContent>
-              </Card>
+            <div className="w-full max-w-lg">
+              {showHeader ? (
+                <Card className="border-border/80 bg-card/95 shadow-none backdrop-blur-sm dark:bg-card/90">
+                  <CardHeader>
+                    {title ? <CardTitle>{title}</CardTitle> : null}
+                    {description ? <CardDescription>{description}</CardDescription> : null}
+                  </CardHeader>
+                  <CardContent>{children}</CardContent>
+                </Card>
+              ) : (
+                children
+              )}
             </div>
           </div>
         </div>

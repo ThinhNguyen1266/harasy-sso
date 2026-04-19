@@ -1,3 +1,5 @@
+import { useClerk, useUser } from '@clerk/react'
+import { useQueryClient } from '@tanstack/react-query'
 import { Link, Outlet, useRouterState } from '@tanstack/react-router'
 import {
   Building2,
@@ -23,15 +25,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { useLogout } from '@/features/auth/hooks/useAuthMutations'
 import { cn } from '@/lib/utils'
-import { useAuthStore } from '@/stores/auth.store'
 
 export function AppShell() {
   const { t } = useTranslation('common')
   const pathname = useRouterState({ select: (s) => s.location.pathname })
-  const session = useAuthStore((s) => s.session)
-  const logout = useLogout()
+  const { user } = useUser()
+  const { signOut } = useClerk()
+  const queryClient = useQueryClient()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const nav = useMemo(
@@ -107,13 +108,13 @@ export function AppShell() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm" className="cursor-pointer">
-                    {session?.user.displayName ?? t('account')}
+                    {user?.fullName ?? user?.primaryEmailAddress?.emailAddress ?? t('account')}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel className="font-normal">
-                    <div className="text-sm font-medium">{session?.user.displayName}</div>
-                    <div className="text-xs text-muted-foreground">{session?.user.email}</div>
+                    <div className="text-sm font-medium">{user?.fullName ?? user?.username}</div>
+                    <div className="text-xs text-muted-foreground">{user?.primaryEmailAddress?.emailAddress}</div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild className="cursor-pointer">
@@ -122,7 +123,10 @@ export function AppShell() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     className="cursor-pointer text-destructive focus:text-destructive"
-                    onClick={() => logout.mutate()}
+                    onClick={() => {
+                      void queryClient.clear()
+                      void signOut({ redirectUrl: '/login' })
+                    }}
                   >
                     <LogOut className="h-4 w-4" />
                     {t('actions.logOut')}
